@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""modules"""
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
@@ -7,6 +9,7 @@ import json
 
 
 class TestBaseModel(unittest.TestCase):
+    """test cases"""
 
 
     def setUp(self):
