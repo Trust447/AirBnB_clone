@@ -33,7 +33,7 @@ class FileStorage:
     def save(self):
         """method that serializes __objects to the
         JSON file (path: __file_path)"""
-        json_dict = {}
+        py_dict = {}
         for keys, values in FileStorage.__objects.items():
             py_dict[keys] = values.to_dict()
         try:
