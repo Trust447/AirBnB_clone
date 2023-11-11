@@ -6,4 +6,9 @@ from models.base_model import BaseModel
 class State(BaseModel):
     """State class inherits from BaseModel"""
 
-        self.name = ""
+    self.name = ""
+
+    def __init__(self, *args, **kwargs):
+        """Constructor for state"""
+
+        super().__init__(*args, **kwargs)

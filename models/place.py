@@ -17,3 +17,8 @@ class Place(BaseModel):
     latitude = float(0.0)
     longitude = float(0.0)
     amenity_ids = []
+
+    def __init__(self, *args, **kwargs):
+        """Constructor for place"""
+
+        super().__init__(*args, **kwargs)
