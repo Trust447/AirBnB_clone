@@ -20,8 +20,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg):
         """Method to exit the program"""
-        print('')
-        return True
+        return self.do_quit(arg)
 
     def emptyline(self):
         """When an empty line is entered, take no action"""
