@@ -37,7 +37,7 @@ class FileStorage:
             py_dict[keys] = values.to_dict()
         try:
             with open(
-                    FileStorage.__file_path, 'w'encoding='utf-8'
+                    FileStorage.__file_path, 'w', encoding='utf-8'
                     ) as json_file:
                 py_dict = json.dump(json_dict, json_file)
         except Exception as err:
