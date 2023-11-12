@@ -3,10 +3,16 @@
 import cmd
 from models.base_model import BaseModel
 from models.user import User
+from models.place import Place
+m models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """Interpreter for HBNB Command program"""
-    prompt = '(hbnb)'
+    prompt = '(hbnb) '
 
     def do_quit(self, arg):
         """Method to exit the program"""
@@ -26,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
         Create a new instance of BaseModel, saves it and prints the id
         """
         if arg:
-            print("** Class doesn't exist **")
+            print("** class doesn't exist **")
             return
 
         try:
