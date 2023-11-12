@@ -5,6 +5,7 @@ from models.base_model import BaseModel
 
 class Amenity(BaseModel):
     """class for user amenity"""
+
     name = ""
 
     def __init__(self, *args, **kwargs):
