@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import json
-from models.base_model import BaseModel
 """module with a class that serializes instances to a JSON
 file and deserializes JSON file to instances
 """
@@ -11,7 +10,7 @@ class FileStorage:
     file and deserializes JSON file to instances
     """
 
-    __file_path = ""
+    __file_path = "file.json"
     __objects = {}
 
     def __init__(self):
@@ -49,13 +48,13 @@ class FileStorage:
         do nothing. If the file doesn’t exist,
         no exception should be raised)"""
         try:
-            with open(FileStorage.__filePath, encoding="utf-8") as json_file:
+            with open(FileStorage.__file_Path, encoding="utf-8") as json_file:
                 decoded_data = json.load(json_file)
                 for obj_values in decoded_data.values():
                     class_name = obj_values.get("__class__")
                     class_object = definedClasses.get(class_name)
                     if class_name and class_object:
                         new_instance = class_object(**obj_values)
-                        self.new(new_instance)
-        except FileNotFoundError:
-            pass
+                        return self.__objects
+        except Exception as err:
+            return self.__objects
