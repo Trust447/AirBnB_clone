@@ -26,49 +26,50 @@ class HBNBCommand(cmd.Cmd):
         """When an empty line is entered, take no action"""
         pass
 
+    def do_help(self, arg):
+        """Get help on commands"""
+        cmd.Cmd.do_help(self, arg)
+
     def do_create(self, arg):
         """
         Create a new instance of BaseModel, saves it and prints the id
         """
-        if arg:
+        if len(arg) == 0 or not isinstance(arg, str):
+            print('** class name missing **')
+        elif arg not in [ 'BaseModel','User', 'State', 'City',
+                'Amenity', 'Place', 'Review']
             print("** class doesn't exist **")
-            return
-
-        try:
-            new_instance = globals()[arg]()
+        else:
+            new_instance = eval(arg + '()')
             new_instance.save()
             print(new_instance.id)
-        except KeyError:
-            print("** class name missing **")
 
     def do_show(self, arg):
         """
         Show the string representation of an instance based on class name and id.
         """
-        args = arg.split()
-        if not args or args[0] == "":
-            print("** class name missing **")
+        if len(args) == 0:
+            print('** class name missing **')
             return
 
+            cls = get_cls(args[0])
+
+        if cls is None:
+            print("** class doesn't exist **")
+            return
+
+        if len(args) == 1:
+            print("** instance id missing **")
+            return
+            ins = cls()
+            ins.id = agrs[1]
+
         try:
-            class_name = args[0]
-            if class_name not in storage.all():
-                print("** class doesn't exist **")
-                return
-
-            if len(args) < 2:
-                print("** instance id missing **")
-                return
-
-            instance_id = args[1]
-            key = "{}.{}".format(class_name, instance_id)
-            if key not in storage.all():
-                print("** no instance found **")
-                return
-
-            print(storage.all()[key])
+            instance = cls.get(ins.id)
         except Exception as e:
-            print(e)
+            return
+
+        print(instance)
 
     def do_destroy(self, arg):
         """
