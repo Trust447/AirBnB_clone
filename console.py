@@ -9,6 +9,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 from models import storage
+""" module for the Aibnb clone console"""
 
 class HBNBCommand(cmd.Cmd):
     """Interpreter for HBNB Command program"""
