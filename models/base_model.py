@@ -16,7 +16,6 @@ class BaseModel:
         """constructor for BaseModel arguments"""
         """from models import storage"""
 
-        from models import storage
         self.id = kwargs.get('id', str(uuid.uuid4()))
         self.created_at = kwargs.get('created_at', datetime.now())
         self.updated_at = kwargs.get('updated_at', datetime.now())
@@ -43,6 +42,7 @@ class BaseModel:
     def save(self):
         """updates the public instance attribute
         updated_at with the current datetime"""
+        from models import storage
 
         self.updated_at = datetime.now()
         storage.save()
