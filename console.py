@@ -15,7 +15,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def do_quit(self, arg):
-        """Method to exit the program"""
+        """Quit command to exit the program"""
         return True
 
     def do_EOF(self, arg):
@@ -37,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
         if len(arg) == 0 or not isinstance(arg, str):
             print('** class name missing **')
         elif arg not in [ 'BaseModel','User', 'State', 'City',
-                'Amenity', 'Place', 'Review']
+                'Amenity', 'Place', 'Review']:
             print("** class doesn't exist **")
         else:
             new_instance = eval(arg + '()')
